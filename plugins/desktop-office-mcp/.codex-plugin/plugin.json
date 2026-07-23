@@ -1,0 +1,38 @@
+{
+  "name": "desktop-office-mcp",
+  "version": "0.1.0",
+  "description": "在 Windows 桌面通过 MCP 安全控制 PowerPoint、Excel 和 Word。",
+  "author": {
+    "name": "Leonyan322",
+    "email": "ty050322@163.com",
+    "url": "https://github.com/Leonyan322"
+  },
+  "homepage": "https://github.com/Leonyan322/desktop-apps-mcp-suite",
+  "repository": "https://github.com/Leonyan322/desktop-apps-mcp-suite",
+  "license": "MIT",
+  "keywords": [
+    "windows",
+    "office",
+    "powerpoint",
+    "excel",
+    "word",
+    "mcp"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Desktop Office MCP",
+    "shortDescription": "安全控制本机 PowerPoint、Excel 和 Word。",
+    "longDescription": "为 Windows 桌面上的 PowerPoint、Excel 和 Word 提供固定版本、可检查且带审批策略的本机 MCP 集成。",
+    "developerName": "Leonyan322",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "检查本机 Office MCP 状态并告诉我是否可以开始。",
+      "编辑我指定的 PowerPoint、Excel 或 Word 文件。"
+    ]
+  }
+}

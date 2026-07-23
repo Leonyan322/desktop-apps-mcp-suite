@@ -1,0 +1,35 @@
+{
+  "mcpServers": {
+    "origin": {
+      "command": "powershell.exe",
+      "args": ["-NoLogo", "-NoProfile", "-NonInteractive", "-ExecutionPolicy", "Bypass", "-File", "./scripts/start-origin.ps1"],
+      "cwd": ".",
+      "startup_timeout_sec": 60,
+      "tool_timeout_sec": 240,
+      "default_tools_approval_mode": "prompt",
+      "tools": {
+        "list_worksheets": {"approval_mode": "approve"},
+        "get_worksheet_data": {"approval_mode": "approve"},
+        "get_matrix_data": {"approval_mode": "approve"},
+        "list_fitting_functions": {"approval_mode": "approve"},
+        "get_labtalk_variable": {"approval_mode": "approve"},
+        "list_skills": {"approval_mode": "approve"},
+        "get_skill": {"approval_mode": "approve"}
+      }
+    },
+    "hfss": {
+      "command": "powershell.exe",
+      "args": ["-NoLogo", "-NoProfile", "-NonInteractive", "-ExecutionPolicy", "Bypass", "-File", "./scripts/start-hfss.ps1"],
+      "cwd": ".",
+      "startup_timeout_sec": 60,
+      "tool_timeout_sec": 300,
+      "default_tools_approval_mode": "prompt",
+      "disabled_tools": ["hfss_stop_app", "hfss_restart_app", "hfss_run_analysis"],
+      "tools": {
+        "hfss_get_process_status": {"approval_mode": "approve"},
+        "hfss_query_modeling_knowledge": {"approval_mode": "approve"},
+        "hfss_get_modeling_knowledge_status": {"approval_mode": "approve"}
+      }
+    }
+  }
+}

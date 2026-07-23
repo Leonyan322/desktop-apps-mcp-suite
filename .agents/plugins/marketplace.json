@@ -1,0 +1,44 @@
+{
+  "name": "desktop-apps-mcp-suite",
+  "interface": {
+    "displayName": "Windows Desktop Apps MCP Suite"
+  },
+  "plugins": [
+    {
+      "name": "desktop-office-mcp",
+      "source": {
+        "source": "local",
+        "path": "./plugins/desktop-office-mcp"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    },
+    {
+      "name": "desktop-engineering-mcp",
+      "source": {
+        "source": "local",
+        "path": "./plugins/desktop-engineering-mcp"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools"
+    },
+    {
+      "name": "desktop-adobe-mcp",
+      "source": {
+        "source": "local",
+        "path": "./plugins/desktop-adobe-mcp"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Creativity"
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "mcpServers": {
+    "ppt": {
+      "command": "powershell.exe",
+      "args": [
+        "-NoLogo",
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        ".\\scripts\\start-ppt.ps1"
+      ],
+      "cwd": ".",
+      "startup_timeout_sec": 60,
+      "tool_timeout_sec": 120,
+      "default_tools_approval_mode": "writes",
+      "enabled": true,
+      "env": {
+        "PPT_AUTO_DISMISS_DIALOG": "false"
+      }
+    },
+    "excel": {
+      "command": "powershell.exe",
+      "args": [
+        "-NoLogo",
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        ".\\scripts\\start-excel.ps1"
+      ],
+      "cwd": ".",
+      "startup_timeout_sec": 60,
+      "tool_timeout_sec": 120,
+      "default_tools_approval_mode": "writes",
+      "enabled": true,
+      "env": {
+        "EXCEL_MCP_PAGING_CELLS_LIMIT": "4000"
+      }
+    },
+    "officemcp": {
+      "command": "powershell.exe",
+      "args": [
+        "-NoLogo",
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        ".\\scripts\\start-officemcp.ps1"
+      ],
+      "cwd": ".",
+      "startup_timeout_sec": 60,
+      "tool_timeout_sec": 120,
+      "default_tools_approval_mode": "prompt",
+      "enabled_tools": [
+        "AvailableApps",
+        "RunningApps",
+        "IsAppAvailable",
+        "RunPython"
+      ],
+      "enabled": true
+    }
+  }
+}

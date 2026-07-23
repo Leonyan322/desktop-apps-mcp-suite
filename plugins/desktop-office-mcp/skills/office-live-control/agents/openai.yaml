@@ -1,0 +1,4 @@
+interface:
+  display_name: "Office Live Control"
+  short_description: "通过本机 MCP 安全控制 Word、Excel 与 PowerPoint"
+  default_prompt: "使用 $office-live-control 检查 Office 连接并完成我指定的文档操作。"

@@ -1,0 +1,28 @@
+{
+  "name": "desktop-engineering-mcp",
+  "version": "0.1.0",
+  "description": "Safely control local Origin and Ansys HFSS desktop sessions through MCP on Windows.",
+  "author": {
+    "name": "Leonyan322",
+    "email": "ty050322@163.com",
+    "url": "https://github.com/Leonyan322"
+  },
+  "homepage": "https://github.com/Leonyan322/desktop-apps-mcp-suite",
+  "repository": "https://github.com/Leonyan322/desktop-apps-mcp-suite",
+  "keywords": ["origin", "hfss", "ansys", "desktop-automation", "mcp"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Desktop Engineering MCP",
+    "shortDescription": "安全控制本机 Origin 与 Ansys HFSS。",
+    "longDescription": "通过本机 stdio MCP 控制 Origin 数据分析与 Ansys HFSS 建模，并对写操作保留逐次审批。",
+    "developerName": "Leonyan322",
+    "category": "Developer Tools",
+    "capabilities": ["Interactive", "Write"],
+    "defaultPrompt": [
+      "检查 Origin 与 HFSS 的连接状态。",
+      "在 Origin 中处理当前打开的数据项目。",
+      "在 HFSS 中检查当前工程并执行已审批的建模操作。"
+    ]
+  },
+  "mcpServers": "./.mcp.json"
+}

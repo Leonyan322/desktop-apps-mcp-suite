@@ -1,0 +1,60 @@
+{
+  "mcpServers": {
+    "photoshop_2020": {
+      "command": "powershell.exe",
+      "args": [
+        "-NoLogo",
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "./scripts/start-photoshop.ps1"
+      ],
+      "cwd": ".",
+      "startup_timeout_sec": 60,
+      "tool_timeout_sec": 120,
+      "default_tools_approval_mode": "writes",
+      "disabled_tools": [
+        "photoshop_generative_fill",
+        "photoshop_generative_remove",
+        "photoshop_generative_expand",
+        "photoshop_generative_upscale",
+        "photoshop_generate_image",
+        "photoshop_neural_filter",
+        "photoshop_sky_replacement",
+        "photoshop_recipe_sky_blend"
+      ],
+      "tools": {
+        "photoshop_execute_script": {
+          "approval_mode": "prompt"
+        }
+      }
+    },
+    "illustrator_2020": {
+      "command": "powershell.exe",
+      "args": [
+        "-NoLogo",
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "./scripts/start-illustrator.ps1"
+      ],
+      "cwd": ".",
+      "startup_timeout_sec": 60,
+      "tool_timeout_sec": 120,
+      "default_tools_approval_mode": "writes",
+      "disabled_tools": [
+        "view",
+        "help"
+      ],
+      "tools": {
+        "run": {
+          "approval_mode": "prompt"
+        }
+      }
+    }
+  }
+}

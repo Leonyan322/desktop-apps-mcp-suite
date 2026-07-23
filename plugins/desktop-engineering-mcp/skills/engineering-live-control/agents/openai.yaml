@@ -1,0 +1,4 @@
+interface:
+  display_name: "Engineering App Control"
+  short_description: "通过本机 MCP 安全控制 Origin 与 Ansys HFSS"
+  default_prompt: "使用 $engineering-live-control 检查工程软件连接并执行用户指定任务。"

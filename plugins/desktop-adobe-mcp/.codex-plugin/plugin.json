@@ -1,0 +1,38 @@
+{
+  "name": "desktop-adobe-mcp",
+  "version": "0.1.0",
+  "description": "Safely control local Photoshop 2020 and Illustrator 2020 through Windows COM MCP servers.",
+  "author": {
+    "name": "Leonyan322",
+    "email": "ty050322@163.com",
+    "url": "https://github.com/Leonyan322"
+  },
+  "homepage": "https://github.com/Leonyan322/desktop-apps-mcp-suite",
+  "repository": "https://github.com/Leonyan322/desktop-apps-mcp-suite",
+  "license": "MIT",
+  "keywords": [
+    "adobe",
+    "photoshop",
+    "illustrator",
+    "windows",
+    "mcp"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Desktop Adobe MCP",
+    "shortDescription": "Control local Photoshop and Illustrator with guarded COM automation.",
+    "longDescription": "Installs pinned local MCP runtimes for Photoshop 2020 and Illustrator 2020, discovers Windows installations dynamically, and keeps arbitrary-script operations behind explicit approval prompts.",
+    "developerName": "Leonyan322",
+    "category": "Creativity",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "检查本机 Adobe MCP 状态，并告诉我可用的 Photoshop 与 Illustrator 操作。",
+      "在 Photoshop 中按我的要求编辑当前文档，保存前先征求确认。",
+      "在 Illustrator 中按我的要求修改当前图稿，高风险脚本执行前先确认。"
+    ]
+  }
+}
