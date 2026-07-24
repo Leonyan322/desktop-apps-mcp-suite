@@ -1,0 +1,4 @@
+interface:
+  display_name: "Origin Live Control"
+  short_description: "Safely control a local Origin desktop session"
+  default_prompt: "Use $origin-live-control to inspect and update the open Origin project."

@@ -1,0 +1,37 @@
+{
+  "name": "desktop-photoshop-mcp",
+  "version": "0.2.0",
+  "description": "Safely control local Photoshop 2020 through a guarded Windows COM MCP server.",
+  "author": {
+    "name": "Leonyan322",
+    "email": "ty050322@163.com",
+    "url": "https://github.com/Leonyan322"
+  },
+  "homepage": "https://github.com/Leonyan322/desktop-apps-mcp-suite",
+  "repository": "https://github.com/Leonyan322/desktop-apps-mcp-suite",
+  "license": "MIT",
+  "keywords": [
+    "adobe",
+    "photoshop",
+    "windows",
+    "mcp"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Desktop Photoshop MCP",
+    "shortDescription": "Control local Photoshop with guarded COM automation.",
+    "longDescription": "Installs a pinned local Photoshop 2020 MCP runtime, discovers the Windows application dynamically, disables unavailable generative tools, and keeps arbitrary-script operations behind explicit approval prompts.",
+    "developerName": "Leonyan322",
+    "category": "Creativity",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "检查本机 Photoshop MCP 状态，并告诉我可用的操作。",
+      "在 Photoshop 中按要求编辑当前文档，保存前先征求确认。",
+      "诊断 Photoshop MCP 连接，但不要执行任何写操作。"
+    ]
+  }
+}

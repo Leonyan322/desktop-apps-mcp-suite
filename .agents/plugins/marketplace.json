@@ -5,10 +5,10 @@
   },
   "plugins": [
     {
-      "name": "desktop-office-mcp",
+      "name": "desktop-powerpoint-mcp",
       "source": {
         "source": "local",
-        "path": "./plugins/desktop-office-mcp"
+        "path": "./plugins/desktop-powerpoint-mcp"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -17,10 +17,34 @@
       "category": "Productivity"
     },
     {
-      "name": "desktop-engineering-mcp",
+      "name": "desktop-excel-mcp",
       "source": {
         "source": "local",
-        "path": "./plugins/desktop-engineering-mcp"
+        "path": "./plugins/desktop-excel-mcp"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    },
+    {
+      "name": "desktop-word-mcp",
+      "source": {
+        "source": "local",
+        "path": "./plugins/desktop-word-mcp"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    },
+    {
+      "name": "desktop-origin-mcp",
+      "source": {
+        "source": "local",
+        "path": "./plugins/desktop-origin-mcp"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -29,10 +53,34 @@
       "category": "Developer Tools"
     },
     {
-      "name": "desktop-adobe-mcp",
+      "name": "desktop-hfss-mcp",
       "source": {
         "source": "local",
-        "path": "./plugins/desktop-adobe-mcp"
+        "path": "./plugins/desktop-hfss-mcp"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools"
+    },
+    {
+      "name": "desktop-photoshop-mcp",
+      "source": {
+        "source": "local",
+        "path": "./plugins/desktop-photoshop-mcp"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Creativity"
+    },
+    {
+      "name": "desktop-illustrator-mcp",
+      "source": {
+        "source": "local",
+        "path": "./plugins/desktop-illustrator-mcp"
       },
       "policy": {
         "installation": "AVAILABLE",

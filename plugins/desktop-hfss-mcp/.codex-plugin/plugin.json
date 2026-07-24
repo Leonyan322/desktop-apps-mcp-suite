@@ -1,0 +1,28 @@
+{
+  "name": "desktop-hfss-mcp",
+  "version": "0.2.0",
+  "description": "Safely control a local Ansys Electronics Desktop HFSS 2023 R1 session through MCP on Windows.",
+  "author": {
+    "name": "Leonyan322",
+    "email": "ty050322@163.com",
+    "url": "https://github.com/Leonyan322"
+  },
+  "homepage": "https://github.com/Leonyan322/desktop-apps-mcp-suite",
+  "repository": "https://github.com/Leonyan322/desktop-apps-mcp-suite",
+  "keywords": ["hfss", "ansys", "aedt", "electromagnetic-simulation", "mcp"],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Desktop HFSS MCP",
+    "shortDescription": "安全控制本机 Ansys HFSS 2023 R1。",
+    "longDescription": "通过本机 stdio MCP 检查和修改 HFSS 工程；停止、重启和自动分析保持禁用，其余写操作逐次审批。",
+    "developerName": "Leonyan322",
+    "category": "Developer Tools",
+    "capabilities": ["Interactive", "Write"],
+    "defaultPrompt": [
+      "检查 HFSS 的连接与进程状态。",
+      "读取当前 HFSS 工程和设计结构。",
+      "在审批后修改当前 HFSS 设计。"
+    ]
+  }
+}

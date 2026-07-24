@@ -1,0 +1,4 @@
+interface:
+  display_name: "PowerPoint Live Control"
+  short_description: "通过本机 MCP 安全连接并控制 Microsoft PowerPoint 演示文稿"
+  default_prompt: "使用 $powerpoint-live-control 检查 PowerPoint 连接并完成我指定的演示文稿操作。"

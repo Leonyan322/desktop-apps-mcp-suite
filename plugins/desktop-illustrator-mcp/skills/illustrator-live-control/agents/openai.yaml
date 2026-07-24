@@ -1,0 +1,4 @@
+interface:
+  display_name: "Illustrator Live Control"
+  short_description: "通过受控的本机 COM MCP 操作 Illustrator"
+  default_prompt: "使用 $illustrator-live-control 检查 Illustrator 连接，并安全完成我指定的矢量图操作。"

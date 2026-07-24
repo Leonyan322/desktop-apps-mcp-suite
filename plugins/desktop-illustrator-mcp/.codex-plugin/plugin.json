@@ -1,0 +1,37 @@
+{
+  "name": "desktop-illustrator-mcp",
+  "version": "0.2.0",
+  "description": "Safely control local Illustrator 2020 through a guarded Windows COM MCP server.",
+  "author": {
+    "name": "Leonyan322",
+    "email": "ty050322@163.com",
+    "url": "https://github.com/Leonyan322"
+  },
+  "homepage": "https://github.com/Leonyan322/desktop-apps-mcp-suite",
+  "repository": "https://github.com/Leonyan322/desktop-apps-mcp-suite",
+  "license": "MIT",
+  "keywords": [
+    "adobe",
+    "illustrator",
+    "windows",
+    "mcp"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Desktop Illustrator MCP",
+    "shortDescription": "Control local Illustrator with guarded COM automation.",
+    "longDescription": "Installs a pinned local Illustrator 2020 MCP runtime, discovers the active Windows COM registration, and keeps its ExtendScript editing interface behind explicit approval prompts.",
+    "developerName": "Leonyan322",
+    "category": "Creativity",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "检查本机 Illustrator MCP 状态，并告诉我可用的操作。",
+      "在 Illustrator 中按要求修改当前图稿，保存前先征求确认。",
+      "诊断 Illustrator MCP 连接，但不要执行脚本或截图。"
+    ]
+  }
+}

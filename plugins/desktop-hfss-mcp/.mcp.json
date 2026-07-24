@@ -1,0 +1,18 @@
+{
+  "mcpServers": {
+    "hfss": {
+      "command": "powershell.exe",
+      "args": ["-NoLogo", "-NoProfile", "-NonInteractive", "-ExecutionPolicy", "Bypass", "-File", "./scripts/start-hfss.ps1"],
+      "cwd": ".",
+      "startup_timeout_sec": 60,
+      "tool_timeout_sec": 300,
+      "default_tools_approval_mode": "prompt",
+      "disabled_tools": ["hfss_stop_app", "hfss_restart_app", "hfss_run_analysis"],
+      "tools": {
+        "hfss_get_process_status": {"approval_mode": "approve"},
+        "hfss_query_modeling_knowledge": {"approval_mode": "approve"},
+        "hfss_get_modeling_knowledge_status": {"approval_mode": "approve"}
+      }
+    }
+  }
+}
