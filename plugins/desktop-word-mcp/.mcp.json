@@ -1,0 +1,27 @@
+{
+  "mcpServers": {
+    "word": {
+      "command": "powershell.exe",
+      "args": [
+        "-NoLogo",
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        ".\\scripts\\start-word.ps1"
+      ],
+      "cwd": ".",
+      "startup_timeout_sec": 60,
+      "tool_timeout_sec": 120,
+      "default_tools_approval_mode": "prompt",
+      "enabled_tools": [
+        "AvailableApps",
+        "RunningApps",
+        "IsAppAvailable",
+        "RunPython"
+      ],
+      "enabled": true
+    }
+  }
+}

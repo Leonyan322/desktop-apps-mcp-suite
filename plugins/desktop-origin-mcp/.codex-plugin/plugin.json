@@ -1,0 +1,29 @@
+{
+  "name": "desktop-origin-mcp",
+  "version": "0.2.0",
+  "description": "Safely control a local Origin or OriginPro desktop session through MCP on Windows.",
+  "author": {
+    "name": "Leonyan322",
+    "email": "ty050322@163.com",
+    "url": "https://github.com/Leonyan322"
+  },
+  "homepage": "https://github.com/Leonyan322/desktop-apps-mcp-suite",
+  "repository": "https://github.com/Leonyan322/desktop-apps-mcp-suite",
+  "license": "MIT",
+  "keywords": ["origin", "originpro", "data-analysis", "desktop-automation", "mcp"],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Desktop Origin MCP",
+    "shortDescription": "安全控制本机 Origin 数据分析会话。",
+    "longDescription": "通过本机 stdio MCP 连接已打开的 Origin 会话，并对所有写入、导入、导出和保存操作保留逐次审批。",
+    "developerName": "Leonyan322",
+    "category": "Developer Tools",
+    "capabilities": ["Interactive", "Write"],
+    "defaultPrompt": [
+      "检查 Origin 的连接状态。",
+      "读取当前 Origin 工作簿和工作表。",
+      "在审批后更新当前 Origin 项目。"
+    ]
+  }
+}

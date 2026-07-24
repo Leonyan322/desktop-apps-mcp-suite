@@ -1,0 +1,28 @@
+{
+  "name": "desktop-word-mcp",
+  "version": "0.2.0",
+  "description": "在 Windows 桌面通过 MCP 安全控制 Microsoft Word。",
+  "author": {
+    "name": "Leonyan322",
+    "email": "ty050322@163.com",
+    "url": "https://github.com/Leonyan322"
+  },
+  "homepage": "https://github.com/Leonyan322/desktop-apps-mcp-suite",
+  "repository": "https://github.com/Leonyan322/desktop-apps-mcp-suite",
+  "license": "MIT",
+  "keywords": ["windows", "office", "word", "mcp"],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Desktop Word MCP",
+    "shortDescription": "安全控制本机 Microsoft Word。",
+    "longDescription": "为 Windows 桌面上的 Word 提供固定版本、可检查且逐次审批的本机 MCP 集成。",
+    "developerName": "Leonyan322",
+    "category": "Productivity",
+    "capabilities": ["Interactive", "Write"],
+    "defaultPrompt": [
+      "检查本机 Word MCP 状态并告诉我是否可以开始。",
+      "编辑我指定的 Word 文档。"
+    ]
+  }
+}

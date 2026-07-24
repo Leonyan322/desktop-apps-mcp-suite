@@ -1,0 +1,21 @@
+{
+  "mcpServers": {
+    "origin": {
+      "command": "powershell.exe",
+      "args": ["-NoLogo", "-NoProfile", "-NonInteractive", "-ExecutionPolicy", "Bypass", "-File", "./scripts/start-origin.ps1"],
+      "cwd": ".",
+      "startup_timeout_sec": 60,
+      "tool_timeout_sec": 240,
+      "default_tools_approval_mode": "prompt",
+      "tools": {
+        "list_worksheets": {"approval_mode": "approve"},
+        "get_worksheet_data": {"approval_mode": "approve"},
+        "get_matrix_data": {"approval_mode": "approve"},
+        "list_fitting_functions": {"approval_mode": "approve"},
+        "get_labtalk_variable": {"approval_mode": "approve"},
+        "list_skills": {"approval_mode": "approve"},
+        "get_skill": {"approval_mode": "approve"}
+      }
+    }
+  }
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "HFSS Live Control"
+  short_description: "Safely control a local Ansys HFSS session"
+  default_prompt: "Use $hfss-live-control to inspect and update the open HFSS project."

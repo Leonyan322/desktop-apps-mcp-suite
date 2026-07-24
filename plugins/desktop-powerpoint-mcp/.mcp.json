@@ -1,0 +1,24 @@
+{
+  "mcpServers": {
+    "ppt": {
+      "command": "powershell.exe",
+      "args": [
+        "-NoLogo",
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        ".\\scripts\\start-ppt.ps1"
+      ],
+      "cwd": ".",
+      "startup_timeout_sec": 60,
+      "tool_timeout_sec": 120,
+      "default_tools_approval_mode": "writes",
+      "enabled": true,
+      "env": {
+        "PPT_AUTO_DISMISS_DIALOG": "false"
+      }
+    }
+  }
+}

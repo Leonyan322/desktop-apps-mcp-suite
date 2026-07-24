@@ -1,0 +1,28 @@
+{
+  "name": "desktop-powerpoint-mcp",
+  "version": "0.2.0",
+  "description": "在 Windows 桌面通过 MCP 安全控制 Microsoft PowerPoint。",
+  "author": {
+    "name": "Leonyan322",
+    "email": "ty050322@163.com",
+    "url": "https://github.com/Leonyan322"
+  },
+  "homepage": "https://github.com/Leonyan322/desktop-apps-mcp-suite",
+  "repository": "https://github.com/Leonyan322/desktop-apps-mcp-suite",
+  "license": "MIT",
+  "keywords": ["windows", "office", "powerpoint", "mcp"],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Desktop PowerPoint MCP",
+    "shortDescription": "安全控制本机 Microsoft PowerPoint。",
+    "longDescription": "为 Windows 桌面上的 PowerPoint 提供固定版本、可检查且带写操作审批的本机 MCP 集成。",
+    "developerName": "Leonyan322",
+    "category": "Productivity",
+    "capabilities": ["Interactive", "Write"],
+    "defaultPrompt": [
+      "检查本机 PowerPoint MCP 状态并告诉我是否可以开始。",
+      "编辑我指定的 PowerPoint 演示文稿。"
+    ]
+  }
+}
