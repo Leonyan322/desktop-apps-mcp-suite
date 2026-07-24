@@ -1,0 +1,75 @@
+{
+  "mcpServers": {
+    "powerpoint": {
+      "command": "powershell.exe",
+      "args": ["-NoLogo", "-NoProfile", "-NonInteractive", "-ExecutionPolicy", "Bypass", "-File", ".\\plugins\\desktop-powerpoint-mcp\\scripts\\start-ppt.ps1"],
+      "cwd": ".\\plugins\\desktop-powerpoint-mcp",
+      "startup_timeout_sec": 60, "tool_timeout_sec": 120,
+      "default_tools_approval_mode": "writes", "enabled": true,
+      "env": { "PPT_AUTO_DISMISS_DIALOG": "false" }
+    },
+    "excel": {
+      "command": "powershell.exe",
+      "args": ["-NoLogo", "-NoProfile", "-NonInteractive", "-ExecutionPolicy", "Bypass", "-File", ".\\plugins\\desktop-excel-mcp\\scripts\\start-excel.ps1"],
+      "cwd": ".\\plugins\\desktop-excel-mcp",
+      "startup_timeout_sec": 60, "tool_timeout_sec": 120,
+      "default_tools_approval_mode": "writes", "enabled": true,
+      "env": { "EXCEL_MCP_PAGING_CELLS_LIMIT": "4000" }
+    },
+    "word": {
+      "command": "powershell.exe",
+      "args": ["-NoLogo", "-NoProfile", "-NonInteractive", "-ExecutionPolicy", "Bypass", "-File", ".\\plugins\\desktop-word-mcp\\scripts\\start-word.ps1"],
+      "cwd": ".\\plugins\\desktop-word-mcp",
+      "startup_timeout_sec": 60, "tool_timeout_sec": 120,
+      "default_tools_approval_mode": "prompt", "enabled": true,
+      "enabled_tools": ["AvailableApps", "RunningApps", "IsAppAvailable", "RunPython"]
+    },
+    "origin": {
+      "command": "powershell.exe",
+      "args": ["-NoLogo", "-NoProfile", "-NonInteractive", "-ExecutionPolicy", "Bypass", "-File", ".\\plugins\\desktop-origin-mcp\\scripts\\start-origin.ps1"],
+      "cwd": ".\\plugins\\desktop-origin-mcp",
+      "startup_timeout_sec": 60, "tool_timeout_sec": 240,
+      "default_tools_approval_mode": "prompt", "enabled": true,
+      "tools": {
+        "list_worksheets": {"approval_mode": "approve"},
+        "get_worksheet_data": {"approval_mode": "approve"},
+        "get_matrix_data": {"approval_mode": "approve"},
+        "list_fitting_functions": {"approval_mode": "approve"},
+        "get_labtalk_variable": {"approval_mode": "approve"},
+        "list_skills": {"approval_mode": "approve"},
+        "get_skill": {"approval_mode": "approve"}
+      }
+    },
+    "hfss": {
+      "command": "powershell.exe",
+      "args": ["-NoLogo", "-NoProfile", "-NonInteractive", "-ExecutionPolicy", "Bypass", "-File", ".\\plugins\\desktop-hfss-mcp\\scripts\\start-hfss.ps1"],
+      "cwd": ".\\plugins\\desktop-hfss-mcp",
+      "startup_timeout_sec": 60, "tool_timeout_sec": 300,
+      "default_tools_approval_mode": "prompt", "enabled": true,
+      "disabled_tools": ["hfss_stop_app", "hfss_restart_app", "hfss_run_analysis"],
+      "tools": {
+        "hfss_get_process_status": {"approval_mode": "approve"},
+        "hfss_query_modeling_knowledge": {"approval_mode": "approve"},
+        "hfss_get_modeling_knowledge_status": {"approval_mode": "approve"}
+      }
+    },
+    "photoshop": {
+      "command": "powershell.exe",
+      "args": ["-NoLogo", "-NoProfile", "-NonInteractive", "-ExecutionPolicy", "Bypass", "-File", ".\\plugins\\desktop-photoshop-mcp\\scripts\\start-photoshop.ps1"],
+      "cwd": ".\\plugins\\desktop-photoshop-mcp",
+      "startup_timeout_sec": 60, "tool_timeout_sec": 120,
+      "default_tools_approval_mode": "writes", "enabled": true,
+      "disabled_tools": ["photoshop_generative_fill", "photoshop_generative_remove", "photoshop_generative_expand", "photoshop_generative_upscale", "photoshop_generate_image", "photoshop_neural_filter", "photoshop_sky_replacement", "photoshop_recipe_sky_blend"],
+      "tools": { "photoshop_execute_script": {"approval_mode": "prompt"} }
+    },
+    "illustrator": {
+      "command": "powershell.exe",
+      "args": ["-NoLogo", "-NoProfile", "-NonInteractive", "-ExecutionPolicy", "Bypass", "-File", ".\\plugins\\desktop-illustrator-mcp\\scripts\\start-illustrator.ps1"],
+      "cwd": ".\\plugins\\desktop-illustrator-mcp",
+      "startup_timeout_sec": 60, "tool_timeout_sec": 120,
+      "default_tools_approval_mode": "writes", "enabled": true,
+      "disabled_tools": ["view", "help"],
+      "tools": { "run": {"approval_mode": "prompt"} }
+    }
+  }
+}

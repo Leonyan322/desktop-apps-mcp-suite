@@ -16,6 +16,28 @@
 
 只支持 Windows 10/11 的交互式桌面会话。其他软件版本可能可用，但尚未完成同等级验证。
 
+## 在 Claude Code 中使用
+
+除了 Codex，本套件的 MCP 服务器也可直接配入 [Claude Code](https://claude.com/claude-code)。先跑 install 脚本安装运行时，然后在项目根目录或桌面创建 `.mcp.json`：
+
+```json
+{
+  "mcpServers": {
+    "word": {
+      "command": "powershell.exe",
+      "args": ["-NoLogo", "-NoProfile", "-NonInteractive",
+               "-ExecutionPolicy", "Bypass", "-File",
+               ".\\plugins\\desktop-word-mcp\\scripts\\start-word.ps1"],
+      "cwd": ".",
+      "startup_timeout_sec": 60,
+      "enabled": true
+    }
+  }
+}
+```
+
+路径用 `cwd` + 相对路径指向对应插件目录下的 start 脚本。只启用需要的软件，未安装运行时的服务器会启动失败但不会影响其他服务器。更多配置参考各插件目录下的 `.mcp.json`。
+
 ## 前置条件
 
 所有插件都需要当前版本的 Codex 桌面应用和 Windows PowerShell 5.1 或 PowerShell 7。按插件安装额外依赖：
