@@ -1,8 +1,6 @@
 # Windows Desktop Apps MCP Suite
 
-面向 Windows 桌面版 Codex 的独立应用 MCP 插件套件。每个插件只检测、安装和启动一个桌面软件的 MCP 运行时；用户不需要安装同组中的其他软件。仓库只包含配置、启动包装器和安装脚本，第三方 MCP 源码会在用户明确运行安装脚本时从固定上游版本下载。
-
-## 插件与兼容性
+7 个独立桌面软件 MCP 插件，**同时支持 Codex 和 Claude Code**。每个插件只负责一个软件；底层的 MCP 运行时是同一套，安装一次即可双端通用。
 
 | 插件 | 软件 | 已验证版本 | MCP 固定版本 |
 | --- | --- | --- | --- |
@@ -14,63 +12,34 @@
 | `desktop-photoshop-mcp` | Photoshop | Photoshop 2020 | Photoshop commit `152f893` |
 | `desktop-illustrator-mcp` | Illustrator | Illustrator 2020 | Illustrator commit `5040dde` |
 
-只支持 Windows 10/11 的交互式桌面会话。其他软件版本可能可用，但尚未完成同等级验证。
+只支持 Windows 10/11 的交互式桌面会话。
 
-## 在 Claude Code 中使用
+---
 
-除了 Codex，本套件的 MCP 服务器也可直接配入 [Claude Code](https://claude.com/claude-code)。先跑 install 脚本安装运行时，然后在项目根目录或桌面创建 `.mcp.json`：
+## 选你的平台
 
-```json
-{
-  "mcpServers": {
-    "word": {
-      "command": "powershell.exe",
-      "args": ["-NoLogo", "-NoProfile", "-NonInteractive",
-               "-ExecutionPolicy", "Bypass", "-File",
-               ".\\plugins\\desktop-word-mcp\\scripts\\start-word.ps1"],
-      "cwd": ".",
-      "startup_timeout_sec": 60,
-      "enabled": true
-    }
-  }
-}
-```
-
-路径用 `cwd` + 相对路径指向对应插件目录下的 start 脚本。只启用需要的软件，未安装运行时的服务器会启动失败但不会影响其他服务器。更多配置参考各插件目录下的 `.mcp.json`。
-
-## 前置条件
-
-所有插件都需要当前版本的 Codex 桌面应用和 Windows PowerShell 5.1 或 PowerShell 7。按插件安装额外依赖：
-
-| 插件 | 额外依赖 |
-| --- | --- |
-| PowerPoint、Word | 64 位 Python 3.12 |
-| Excel | Node.js 20 或更高版本、npm |
-| Origin、HFSS | Git、64 位 Python 3.10–3.12 |
-| Photoshop | Git、Node.js 18 或更高版本、npm、Windows Script Host |
-| Illustrator | Git、64 位 Python 3.12 或更高版本 |
-
-目标桌面软件必须已经安装、成功启动过一次，并完成许可证激活或首次启动向导。安装脚本不要求管理员权限，也不会修改个人 `~/.codex/config.toml`。软件自身的 UAC、激活、受保护视图或文件恢复窗口仍需用户在桌面处理。
-
-## 安装单个插件
-
-克隆仓库，选择一个插件并依次执行预检、安装和健康检查。以下以 Word 为例：
+### 我是 Codex 用户
 
 ```powershell
 git clone https://github.com/Leonyan322/desktop-apps-mcp-suite.git
 Set-Location .\desktop-apps-mcp-suite
 
-$plugin = "desktop-word-mcp"
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File ".\plugins\$plugin\scripts\preflight.ps1"
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File ".\plugins\$plugin\scripts\install.ps1"
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File ".\plugins\$plugin\scripts\health-check.ps1"
+# ① 安装运行时（以 Word 为例，其他同理）
+$plugin = “desktop-word-mcp”
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File “.\plugins\$plugin\scripts\preflight.ps1”
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File “.\plugins\$plugin\scripts\install.ps1”
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File “.\plugins\$plugin\scripts\health-check.ps1”
+
+# ② 添加 Marketplace 并安装插件
+codex plugin marketplace add Leonyan322/desktop-apps-mcp-suite
+codex plugin add desktop-word-mcp@desktop-apps-mcp-suite
+
+# ③ 重启 Codex，新建任务即可使用
 ```
 
-将仓库 Marketplace 加到 Codex，再安装所需插件：
+只安装你需要的软件对应的插件。完整列表：
 
 ```powershell
-codex plugin marketplace add Leonyan322/desktop-apps-mcp-suite
-
 codex plugin add desktop-powerpoint-mcp@desktop-apps-mcp-suite
 codex plugin add desktop-excel-mcp@desktop-apps-mcp-suite
 codex plugin add desktop-word-mcp@desktop-apps-mcp-suite
@@ -80,21 +49,77 @@ codex plugin add desktop-photoshop-mcp@desktop-apps-mcp-suite
 codex plugin add desktop-illustrator-mcp@desktop-apps-mcp-suite
 ```
 
-只执行需要的软件对应命令。随后重启 Codex 并新建任务，使新 Skill 和 MCP 工具进入任务上下文。
-
-## 从 v0.1.0 迁移
-
-`v0.1.0` 的三个组合插件已经拆成七个独立插件。现有 MCP 运行时目录保持不变，不需要主动运行旧卸载脚本或重新下载全部依赖。
+### 我是 Claude Code 用户
 
 ```powershell
-codex plugin marketplace upgrade desktop-apps-mcp-suite
+git clone https://github.com/Leonyan322/desktop-apps-mcp-suite.git
+Set-Location .\desktop-apps-mcp-suite
+
+# ① 安装运行时（以 Word 为例，其他同理）
+$plugin = “desktop-word-mcp”
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File “.\plugins\$plugin\scripts\preflight.ps1”
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File “.\plugins\$plugin\scripts\install.ps1”
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File “.\plugins\$plugin\scripts\health-check.ps1”
+
+# ② 什么都不用做——仓库根目录的 .mcp.json 已配好全部 7 个服务器
+# ③ 在当前目录启动 Claude Code，MCP 自动连接
 ```
 
-然后在 Codex 插件页面停用或卸载旧的 `desktop-office-mcp`、`desktop-engineering-mcp`、`desktop-adobe-mcp`，并安装需要的独立插件。旧版本仍可通过 Git 标签 [`v0.1.0`](https://github.com/Leonyan322/desktop-apps-mcp-suite/tree/v0.1.0) 获取。
+仓库根目录的 `.mcp.json` 预配了全部 7 个服务器。不需要的软件把对应 `”enabled”` 改为 `false` 即可，未装运行时的服务器启动失败不影响其他服务器。
+
+### 从 v0.1.0（旧 3 合 1 插件）迁移
+
+旧版用户不需要重装运行时，只需更新仓库：
+
+```powershell
+# Codex
+codex plugin marketplace upgrade desktop-apps-mcp-suite
+# 在 Codex 插件页面停用旧的 desktop-office-mcp / desktop-engineering-mcp / desktop-adobe-mcp
+# 再按需安装新的独立插件
+
+# Claude Code
+git pull
+# .mcp.json 已随仓库更新，重启 Claude Code 即可
+```
+
+旧版本仍可通过 Git 标签 [`v0.1.0`](https://github.com/Leonyan322/desktop-apps-mcp-suite/tree/v0.1.0) 获取。
+
+---
+
+## 前置条件
+
+Windows PowerShell 5.1 或 PowerShell 7。按插件安装额外依赖：
+
+| 插件 | 额外依赖 |
+| --- | --- |
+| PowerPoint、Word | 64 位 Python 3.12 |
+| Excel | Node.js 20 或更高版本、npm |
+| Origin、HFSS | Git、64 位 Python 3.10–3.12 |
+| Photoshop | Git、Node.js 18 或更高版本、npm、Windows Script Host |
+| Illustrator | Git、64 位 Python 3.12 或更高版本 |
+
+目标桌面软件必须已经安装、成功启动过一次，并完成许可证激活或首次启动向导。安装脚本不要求管理员权限。软件自身的 UAC、激活、受保护视图或文件恢复窗口仍需用户在桌面处理。
+
+---
+
+## 安装运行时（两种平台都要跑这一步）
+
+运行时的安装方式完全相同——它独立于 Codex / Claude Code：
+
+```powershell
+$plugin = “desktop-word-mcp”   # 换成你要的插件名
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File “.\plugins\$plugin\scripts\preflight.ps1”
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File “.\plugins\$plugin\scripts\install.ps1”
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File “.\plugins\$plugin\scripts\health-check.ps1”
+```
+
+运行时安装在 `%LOCALAPPDATA%\desktop-apps-mcp-suite\`。Codex 和 Claude Code 共享同一份运行时，不需要重复安装。
+
+---
 
 ## 验证范围
 
-健康检查会真实执行 MCP `initialize` 和 `tools/list`，但不会调用写入、删除、任意脚本、保存、截图或仿真工具。当前实机基线：
+健康检查会真实执行 MCP `initialize` 和 `tools/list`，但不会调用写入、删除、保存、截图或仿真工具。当前实机基线：
 
 | 软件 | 工具数量 |
 | --- | ---: |
@@ -106,36 +131,49 @@ codex plugin marketplace upgrade desktop-apps-mcp-suite
 | Photoshop | 87 |
 | Illustrator | 7 |
 
-这些结果证明固定版本在已验证环境中能够完成协议握手和工具发现，不等于所有业务工具、软件版本和异常状态均无缺陷。
+---
 
-## 权限提示
+## 权限与安全
 
-“完全文件访问”只决定 Codex 能否访问本机文件，不等于允许 MCP 执行所有桌面操作。各插件对高风险操作保留独立审批：
+各插件对高风险操作保留独立审批。Codex 和 Claude Code 各有自己的审批机制，与 Windows、Office、Origin、Ansys、Adobe 自身弹窗是两套独立机制。
 
-- Word `RunPython`、Origin 写操作与 LabTalk、HFSS 建模写操作会询问。
-- Photoshop `photoshop_execute_script` 和 Illustrator `run` 能执行任意脚本，会逐次询问。
-- PowerPoint、Excel、Photoshop、Illustrator 使用保守的 `writes` 策略。Adobe 上游缺少只读注解，因此查询也可能弹出审批。
-- HFSS 的停止、重启和同步仿真工具默认禁用；Illustrator 的全屏截图 `view` 与不稳定的 `help` 默认禁用。
+- Word `RunPython`、Origin 写操作与 LabTalk、HFSS 建模写操作会询问
+- Photoshop `photoshop_execute_script` 和 Illustrator `run` 能执行任意脚本，会逐次询问
+- PowerPoint、Excel、Photoshop、Illustrator 使用保守的 `writes` 策略
+- HFSS 的停止、重启和同步仿真工具默认禁用；Illustrator 的全屏截图 `view` 与不稳定的 `help` 默认禁用
+- Photoshop 启动时强制关闭其 MCP 分析遥测
+- stdio 启动包装器的 stdout 只保留 MCP 协议数据，诊断信息写入 stderr
+- 安装和健康检查不会打开或修改测试文档
+- 仓库不提交个人配置、绝对路径、测试文件、访问令牌或软件许可证信息
 
-Codex MCP 审批与 Windows、Office、Origin、Ansys、Adobe 自身弹窗是两套独立机制。
+---
 
 ## 运行目录与卸载
 
-运行时安装在当前用户的：
+七个插件的运行时目录：
 
 ```text
 %LOCALAPPDATA%\desktop-apps-mcp-suite\
+├── office\ppt\
+├── office\excel\
+├── office\officemcp\
+├── engineering\origin\
+├── engineering\hfss\
+├── adobe\photoshop-mcp\
+└── adobe\illustrator-mcp\
 ```
 
-七个插件继续复用 `office\ppt`、`office\excel`、`office\officemcp`、`engineering\origin`、`engineering\hfss`、`adobe\photoshop-mcp` 和 `adobe\illustrator-mcp`。每个 `scripts\uninstall.ps1` 只允许删除自己的组件目录，不删除桌面软件、其他 MCP 运行时、仓库、Codex 配置或用户文档。可先使用 `-WhatIf` 预览。
+每个 `scripts\uninstall.ps1` 只删除自己的组件目录，不删除桌面软件、其他 MCP 运行时、仓库、AI 工具配置或用户文档。可先使用 `-WhatIf` 预览。
+
+---
 
 ## 第三方项目与许可证
 
-本仓库的自有脚本和配置使用 [MIT License](LICENSE)。第三方 MCP 项目不包含在本仓库中，仍受各自上游条款约束。`hfss-2023r1.patch` 中保留的上游上下文不在本仓库 MIT 授权范围内。
+本仓库的自有脚本和配置使用 [MIT License](LICENSE)。第三方 MCP 项目不包含在本仓库中，仍受各自上游条款约束。
 
 | 项目 | 上游声明状态 |
 | --- | --- |
-| `ppt-mcp` | 包元数据声明 MIT，但上游仓库/发行包未附许可证正文 |
+| `ppt-mcp` | 包元数据声明 MIT，但上游仓库未附许可证正文 |
 | `@negokaz/excel-mcp-server` | MIT，仓库和 npm 包均附许可证 |
 | `OfficeMCP` | 上游未声明许可证 |
 | `Origin-Pro-MCP` | MIT，仓库附许可证 |
@@ -144,10 +182,3 @@ Codex MCP 审批与 Windows、Office、Origin、Ansys、Adobe 自身弹窗是两
 | `illustrator-mcp` | 上游未声明许可证 |
 
 许可证未明确的项目不会被本仓库重新分发。安装脚本只帮助用户从原始上游下载固定提交；组织内分发或商业使用前应自行确认上游授权。
-
-## 安全与隐私
-
-- Photoshop 启动时强制关闭其 MCP 分析遥测。
-- stdio 启动包装器的 stdout 只保留 MCP 协议数据，诊断信息写入 stderr。
-- 安装和健康检查不会打开或修改测试文档。
-- 仓库不提交个人 `config.toml`、绝对路径、测试文件、访问令牌或软件许可证信息。
